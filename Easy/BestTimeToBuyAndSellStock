@@ -28,6 +28,9 @@
  * @param {number[]} prices
  * @return {number}
  */
+
+// Iterate through the prices, keep track of min buying price and update profit whenever higher selling price.
+
 let maxProfit = function(prices) {
     if (prices.length === 0) {
         return 0;
