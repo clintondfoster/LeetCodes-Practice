@@ -36,14 +36,14 @@
 //  */
 
 function twoSum(nums, target) {
-    let arr = [];
+    let map = {};
 
     for (let i = 0; i < nums.length; i++) {
-        let otherNum = target - nums[i];
-        if (arr[otherNum] !== undefined) {
-            return [arr[otherNum], i];
+        let complment = target - nums[i];
+        if (map[complment] !== undefined) {
+            return [map[complment], i];
         }
-        arr[nums[i]] = i;
+        map[nums[i]] = i;
     }
     return [];
 };
