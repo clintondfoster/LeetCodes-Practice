@@ -32,7 +32,7 @@
 //  * @param {number} x
 // * @return {boolean}
 // */
-
+/////////////////////// Converting to a string
 var isPalindrome = function(x) {
     // convert to a string. Split the string, reverse it, and check to see if reversed matches.
 
@@ -42,3 +42,25 @@ var isPalindrome = function(x) {
     const reversedStr = str.split('').reverse().join("");
     return str === reversedStr;
 };
+
+////////////////////////Alternate solution solving without converting interger to a string
+var isPalindrome = function(x) {
+    //eliminate negative numbers. negatives can not be palindromes.
+    //reverse half of the number. numbers ending in 0, can not be palindromes.
+    //handle odd and even legnths. 
+
+    if (x < 0 || (x % 10 === 0 && x !== 0)) {
+        return false;
+    }
+    let reversedHalf = 0;
+    while (x > reversedHalf) {
+        reversedHalf = reversedHalf * 10 + x % 10;
+        x = Math.floor(x/10);
+    }
+    //The number is a palindrome if its the same as the reversed half 
+    //or the same when ignoring the middle digit (for odd length numbers)
+
+    return x === reversedHalf || x === Math.floor(reversedHalf/10);
+    
+}
+
