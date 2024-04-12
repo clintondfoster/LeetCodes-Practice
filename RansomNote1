@@ -31,7 +31,8 @@
  * @param {string} magazine
  * @return {boolean}
  */
-function canConstruct (ransomNote, magazine) {
+
+var canConstruct = function (ransomNote, magazine) {
     const vocab = {};
 
 //count each letter in magazine
