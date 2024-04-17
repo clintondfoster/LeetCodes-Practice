@@ -47,7 +47,7 @@ var isMirror = function(leftTree, rightTree) {
     if (!leftTree || !rightTree) return false;
     //return true if values of root nodes are the same as well as left and righht values are symetrical 
     return (leftTree.val === rightTree.val) && isMirror(leftTree.left, rightTree.right) && isMirror (leftTree.right, rightTree.left)
-    }
+    };
 
     //Iterative Approach. start with a queue containing two entries, (tree with itself). when not empty, dequeue two nodes and compare.
     //If both not-null and values match, queue their children (left with right) and (right with left)
@@ -64,4 +64,4 @@ var isMirror = function(leftTree, rightTree) {
             queue.push(t1.right, t2.left);
         }
         return true;
-    }
+    };
