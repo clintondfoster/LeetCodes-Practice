@@ -49,19 +49,20 @@ var isMirror = function(leftTree, rightTree) {
     return (leftTree.val === rightTree.val) && isMirror(leftTree.left, rightTree.right) && isMirror (leftTree.right, rightTree.left)
     };
 
+    
     //Iterative Approach. start with a queue containing two entries, (tree with itself). when not empty, dequeue two nodes and compare.
     //If both not-null and values match, queue their children (left with right) and (right with left)
 
-    var isSymmetrical = function(root) {
-        let queue = [];
-        queue.push(root, root) {
-            let t1 = queue.shift();
-            let t2 = queue.shift();
-            if (!t1 && !t2) continue;
-            if(!t1 || !t2) return false;
-            if (t1.val !== t2.val) return false;
-            queue.push(t1.left, t2.right);
-            queue.push(t1.right, t2.left);
-        }
-        return true;
-    };
+    // var isSymmetrical = function(root) {
+    //     let queue = [];
+    //     queue.push(root, root) {
+    //         let t1 = queue.shift();
+    //         let t2 = queue.shift();
+    //         if (!t1 && !t2) continue;
+    //         if(!t1 || !t2) return false;
+    //         if (t1.val !== t2.val) return false;
+    //         queue.push(t1.left, t2.right);
+    //         queue.push(t1.right, t2.left);
+    //     }
+    //     return true;
+    // };
