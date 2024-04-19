@@ -33,6 +33,24 @@
 //  */
 
 
-var isHappy = function(n) {
-    
+ //Make sure n is positive. Take n, separate its digits, square each, them sum.
+ //Floyds Cycle-Finding Algorithm (tortoise and hare.) When the sum reaches 1, then stop the loop. If the sum never reaches one, then return false.
+function isHappy(n) {
+    function getSum(num) {
+        let sum = 0;
+        while (num > 0) {
+            let digit = num % 10;
+            sum += digit * digit;
+            num = Math.floor(num / 10);
+        }
+        return sum;
+    }
+    let slow = n;
+    let fast = getSum(n);
+    //Check for cycle 
+    while (fast !== 1 && slow !== fast) {
+        slow = getSum(slow); // move slow by 1 step
+        fast = getSum(getSum(fast)); //move fast by 2 steps
+    }
+    return fast === 1; //if fast is 1, then we found a happy number
 };
