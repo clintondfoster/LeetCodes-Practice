@@ -65,36 +65,24 @@
 //  * @return {Node}
 //  */
 
-class Node {
-    constructor(val, neighbors) {
-        this.val = val;
-        this.neighbors = neighbors;
-    }
-}
+var cloneGraph = function(node) {
+    if(node == null) return node;
+    const visited = new Array();
+    return cloneHelper(node,visited);
+};
 
-function cloneGraph(node) {
-    if (!node) return null;
-
-    const map = new Map(); // This map will track cloned nodes.
-
-    // Helper function to perform DFS and clone nodes
-    function dfs(node) {
-        // If the node is already cloned, return the cloned node from the map
-        if (map.has(node.val)) {
-            return map.get(node.val);
+var cloneHelper = function(node,visited){
+    const newNode =new Node(node.val);
+    visited[node.val] = newNode;
+    for(const neighbor of node.neighbors){
+        if(!visited[neighbor.val]){
+            const newNeighbor = cloneHelper(neighbor,visited);
+            newNode.neighbors.push(newNeighbor);
         }
-
-        // Clone the node
-        const clone = new Node(node.val, []);
-        map.set(node.val, clone); // Store cloned node in the map
-
-        // Recursively clone and set all the neighbors
-        node.neighbors.forEach(neighbor => {
-            clone.neighbors.push(dfs(neighbor)); // Recursively clone neighbors
-        });
-
-        return clone;
+        else{
+            const newNeighbor = visited[neighbor.val];
+            newNode.neighbors.push(newNeighbor);
+        }
     }
-
-    return dfs(node);
+    return newNode;
 }
