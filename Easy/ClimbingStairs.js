@@ -43,5 +43,6 @@
         first = second;
         second = third;
     }
-    return second
+    return second;
+
 };
